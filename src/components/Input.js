@@ -22,11 +22,11 @@ class Input extends Component {
       <div>
         <input
           style={{borderWidth: 1, borderColor: 'red'}}
-          placeholder="请输入代办事项"
+          placeholder="Please enter TODO"
           value={this.state.value}
           onChange={(e) => this.setState({value: e.target.value})}
           onKeyDown={e => {
-            if (Number(e.keyCode) === 13){
+            if (e.keyCode.toString() === '13'){
               let title = e.target.value;
               if(title > 0) {
                 this.addTodo(title)

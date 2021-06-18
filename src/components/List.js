@@ -36,7 +36,7 @@ class List extends Component {
                     defaultValue={item.title}
                     autoFocus={false}
                     onKeyDown={(e) => {
-                      if (e.keyCode === 13) {
+                      if (e.keyCode.toString() === '13') {
                         let title = e.target.value
                         this.modify(title, index)
                       }

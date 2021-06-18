@@ -8,8 +8,8 @@ class Header extends Component {
     list.map(item => count = !item.finished ? count + 1 : count)
     return (
       <div>
-        <h1>我的代办清单</h1>
-        <h3>{count ? `你有${count}个代办事项，赶快去处理` : `没有代办事项，快去添加吧`}</h3>
+        <h1>My TODOs</h1>
+        <h3>{count ? `You have ${count} TODOs, please deal with them.` : `There is no TODO, just add it.`}</h3>
       </div>
     )
   }
