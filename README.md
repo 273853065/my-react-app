@@ -2,13 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This project is a react-saga demo. Its main function are add todo checkbox list and delete list.
+This project is a react-saga demo. Its main functions are add todo checkbox lists and delete lists.
 
 ## Install Dependencies
 
 run following command to install dependencies packages:
 
-### `yarn start`
+### `npm install`
 
 ## Available Scripts
 
