@@ -26,7 +26,7 @@ class Input extends Component {
           value={this.state.value}
           onChange={(e) => this.setState({value: e.target.value})}
           onKeyDown={e => {
-            if (e.keyCode == 13){
+            if (Number(e.keyCode) === 13){
               let title = e.target.value;
               if(title > 0) {
                 this.addTodo(title)
