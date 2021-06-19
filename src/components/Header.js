@@ -9,7 +9,7 @@ class Header extends Component {
     return (
       <div>
         <h3 className="text-center">My TODOs</h3>
-        <h5>{count ? `You have ${count} TODOs, please deal with them.` : `There is no TODO, just add it.`}</h5>
+        <h5>{count ? `You have ${count} TODO(s), please deal with.` : `There is no TODO, just add it.`}</h5>
       </div>
     )
   }

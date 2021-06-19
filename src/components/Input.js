@@ -22,6 +22,7 @@ class Input extends Component {
       <div>
         <div className="col-sm-12 mb10 pr0">
           <input
+            id="todo_input"
             className="form-control"
             placeholder="Please enter TODO"
             value={this.state.value}
@@ -33,7 +34,8 @@ class Input extends Component {
                   this.addTodo(title)
                 }
               }
-            }}
+            }
+          }
           />
         </div>
       </div>
