@@ -35,3 +35,26 @@
         transform: rotate(360deg);
     }
 }
+
+.mt5 {
+    margin-top: 5px;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.fix-middle {
+    width: 1000px;
+    margin: 0 auto;
+    max-height: 1000px;
+    text-align: center;
+}
+
+.pr0 {
+    padding-right: 0 !important;
+}

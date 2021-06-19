@@ -14,26 +14,28 @@ class Input extends Component {
 
   addTodo(value) {
     this.props.addItem(value)
-    this.setState({value: ''})
+    this.setState({ value: '' })
   }
 
   render() {
     return (
       <div>
-        <input
-          style={{borderWidth: 1, borderColor: 'red'}}
-          placeholder="Please enter TODO"
-          value={this.state.value}
-          onChange={(e) => this.setState({value: e.target.value})}
-          onKeyDown={e => {
-            if (e.keyCode.toString() === '13'){
-              let title = e.target.value;
-              if(title > 0) {
-                this.addTodo(title)
+        <div className="col-sm-12 mb10 pr0">
+          <input
+            className="form-control"
+            placeholder="Please enter TODO"
+            value={this.state.value}
+            onChange={(e) => this.setState({ value: e.target.value })}
+            onKeyDown={e => {
+              if (e.keyCode.toString() === '13') {
+                let title = e.target.value;
+                if (title > 0) {
+                  this.addTodo(title)
+                }
               }
-            }
-          }}
-        />
+            }}
+          />
+        </div>
       </div>
     )
   }
