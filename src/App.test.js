@@ -40,7 +40,7 @@ it('can render and update a App', () => {
   });
   const input = container.querySelector('#todo_input');
   const h5 = container.querySelector('h5');
-  expect(h5.textContent).toBe('There is no TODO, just add it.');
+  expect(h5.textContent).toBe('There is no Todo, just add it.');
 
   //test input funciton
   let lastValue = input.value;

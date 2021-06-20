@@ -24,7 +24,7 @@ class Input extends Component {
           <input
             id="todo_input"
             className="form-control"
-            placeholder="Please enter TODO"
+            placeholder="Please enter a Todo"
             value={this.state.value}
             onChange={(e) => this.setState({ value: e.target.value })}
             onKeyDown={e => {
