@@ -1,7 +1,6 @@
 import React from 'react';
 import { unmountComponentAtNode, render } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import { fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux'
 import App from './App';
 import store from './store';
@@ -73,5 +72,4 @@ it('can render and update a App', () => {
     }));
   });
   expect(input.value).toBe('');
-  // expect(h5.textContent).toBe('You have 1 TODO(s), please deal with.');
 });
