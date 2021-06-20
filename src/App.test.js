@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { unmountComponentAtNode, render } from 'react-dom';
 import { act } from 'react-dom/test-utils';
+import { fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux'
 import App from './App';
 import store from './store';
@@ -8,29 +9,33 @@ import store from './store';
 //Prepare a component for the assertion, 
 //wrap the code to be rendered and perform the update when act() is called. 
 //This will bring the test closer to how React works in the browser.
-let container;
+let container = null;
 
 beforeEach(() => {
+  // Create a DOM element as the rendering target
   container = document.createElement('div');
   document.body.appendChild(container);
 });
 
 afterEach(() => {
-  document.body.removeChild(container);
+  // Clean up on exit
+  unmountComponentAtNode(container);
+  container.remove();
   container = null;
 });
 
 //smoking test
 it('renders without crashing', () => {
-  ReactDOM.render(<Provider store={store}>
+  render(<Provider store={store}>
     <App />
   </Provider>, container);
 });
 
+//component unit test
 it('can render and update a App', () => {
   //test render and componentDidMount
   act(() => {
-    ReactDOM.render(<Provider store={store}>
+    render(<Provider store={store}>
       <App />
     </Provider>, container);
   });
@@ -45,22 +50,28 @@ it('can render and update a App', () => {
   if (tracker) {
     tracker.setValue(lastValue);
   }
-  input.dispatchEvent(new InputEvent('input', { bubbles: true }));
-
-  expect(input.value).toBe('testtest');
 
   // text render and componentDidUpdate
-  // act(() => {
-  //   input.focus()
-  //   input.dispatchEvent(new KeyboardEvent('keydown', {
-  //     ctrlKey: false,
-  //     metaKey: false,
-  //     altKey: false,
-  //     which: 13,
-  //     keyCode: 13,
-  //     key: 'Enter',
-  //     code: 'Enter'
-  //   }));
-  // });
+  act(() => {
+    // You need to pass {bubbles: true} in each event created to reach the React listener, 
+    // because React will automatically delegate the event to root.
+    input.dispatchEvent(new InputEvent('input', { bubbles: true }));
+  });
+  expect(input.value).toBe('testtest');
+
+  act(() => {
+    input.focus();
+    input.dispatchEvent(new KeyboardEvent('keydown', {
+      ctrlKey: false,
+      metaKey: false,
+      altKey: false,
+      which: 13,
+      keyCode: 13,
+      key: 'Enter',
+      code: 'Enter',
+      bubbles: true
+    }));
+  });
+  expect(input.value).toBe('');
   // expect(h5.textContent).toBe('You have 1 TODO(s), please deal with.');
-})
+});
